@@ -24,9 +24,9 @@ The IBL dataset is uniquely suited for this analysis: its brain-wide Neuropixels
  
 ## Methods
  
-We analyzed 580,598 units from the IBL 2025 Brainwide Map Release {cite}`ibl2025` during 5–10-minute spontaneous epochs. Units with ≥100 spikes, declining autocorrelations, and fit $R^2$ ≥ 0.5 were retained (89,047 units, 15.34%). Brain regions were grouped using the Beryl parcellation, a brain-wide region atlas developed by the International Brain Laboratory {cite}`ibl_atlas`, into major divisions (forebrain, midbrain, hindbrain), 12 subdivisions, and 266 individual regions (220 with ≥15 neurons analyzed).
+We analyzed 580,598 units from the IBL 2025 Brainwide Map Release {cite}`ibl2025` during 5–10-minute spontaneous epochs. Units with ≥100 spikes, declining autocorrelations, and fit $R^2$ ≥ 0.5 were retained (89,047 units, 15.34%). Brain regions were grouped using the Beryl parcellation — a brain-wide region atlas developed by the International Brain Laboratory {cite}`ibl_atlas` — into major divisions (forebrain, midbrain, hindbrain), 12 subdivisions, and 266 individual regions (220 with ≥15 neurons analyzed).
  
-Timescales were estimated using iSTTC, an unbinned autocorrelation estimator operating on exact spike times {cite}`pochinok2026`, avoiding biases in low-firing-rate neurons. Unlike binned ACF methods, iSTTC estimates are insensitive to bin size and epoching artifacts ([](#supp-fig-1)). Each autocorrelation was fitted with 1–4 exponential components:
+Timescales were estimated using iSTTC, an unbinned autocorrelation estimator operating on exact spike times {cite}`pochinok2026`, avoiding biases in low-firing-rate neurons. Unlike binned ACF methods, iSTTC estimates are insensitive to bin size and epoching artifacts ([Supplementary Figure 1](#supp-fig-1)). Each autocorrelation was fitted with 1–4 exponential components:
  
 $$f(t) = \sum_i c_i \cdot \exp(-t/\tau_i)$$
  
@@ -34,7 +34,7 @@ with optimal component count selected by BIC (≥1% contribution each). This rev
  
 ## Results
  
-After quality filtering (see Methods), 89,047 units (15.3% of recorded units) across 220 regions (71% of the Beryl parcellation; ≥15 neurons each) were retained for analysis ([](#supp-fig-2)).
+After quality filtering (see Methods), 89,047 units (15.3% of recorded units) across 220 regions (71% of the Beryl parcellation; ≥15 neurons each) were retained for analysis ([Supplementary Figure 2](#supp-fig-2)).
  
 A clear anatomical gradient emerged when neurons were grouped by major division. The forebrain exhibited the shortest timescales (median $\tau_\text{eff}$ = 213 ms, IQR = 120–304 ms), while the midbrain and hindbrain showed markedly longer temporal persistence (765 ms, IQR = 482–968 ms and 956 ms, IQR = 723–1183 ms, respectively) ([Figure 1A](#figure-main)). This forebrain-to-hindbrain organisation was further reflected at the level of individual Beryl subdivisions, with hippocampal and cortical subplate regions anchoring the fast end and hindbrain nuclei clustering at the slow extreme ([Figure 1B](#figure-main)) {cite}`ibl_atlas`.
  
@@ -46,11 +46,11 @@ A clear anatomical gradient emerged when neurons were grouped by major division.
 **Brain-wide map of intrinsic neural timescales across brain regions.** All panels except C exclude regions with fewer than 15 neurons (220 regions retained); C excludes regions with fewer than 5 neurons (244 regions retained). **(A)** Effective timescale distributions by major brain division (forebrain, midbrain, hindbrain); boxes show the interquartile range of region-level $\tau_\text{eff}$ medians, with whiskers extending to the 10th and 90th percentiles. **(B)** Timescale distributions across the 12 Beryl parcellation subdivisions, ordered from fastest to slowest median $\tau_\text{eff}$. Boxes show the interquartile range and whiskers indicate the 10th and 90th percentiles. **(C)** Brain-wide bar chart of median $\tau_\text{eff}$ per region; bars show median $\tau_\text{eff}$ and error bars indicate the interquartile range (Q1–Q3). Regions are grouped by major anatomical division — forebrain (top), midbrain (middle), and hindbrain (bottom) — and ordered alphabetically within each subdivision. Colour denotes Allen Mouse Brain Atlas Beryl parcellation subdivision (CTX, isocortex; OLF, olfactory areas; HPF, hippocampal formation; CTXsp, cortical subplate; STR, striatum; PAL, pallidum; TH, thalamus; HY, hypothalamus; P, pons; MY, medulla; MB, midbrain; CB, cerebellum). **(D)** Coupled multiscale architecture of fast and slow timescale components. Each point represents one brain region ($n$ = 220 regions with reliable two-component fits), plotted by its median fast timescale ($\tau_1$) against its median slow timescale ($\tau_2$) on log-log axes. Colors denote major division: forebrain, midbrain, and hindbrain. The dashed line shows the log-log regression fit (slope = 0.545, $r$ = 0.766, $p$ = 9.68 × 10⁻⁴⁴), indicating that regions with longer fast timescales also tend to have proportionally longer slow timescales.
 ```
  
-Median $\tau_\text{eff}$ spanned nearly two orders of magnitude, ranging from 37.9 ms in the paraventricular nucleus of the thalamus to 3,115 ms in the infracerebellar nucleus ([Figure 1C](#figure-main)). Despite this striking gradient, the remaining ~79% of timescale variance reflected variability within regions (median IQR = 588 ms per area) ([](#supp-fig-3)), highlighting that anatomical region is a meaningful but partial determinant of a neuron's temporal dynamics.
+Median $\tau_\text{eff}$ spanned nearly two orders of magnitude, ranging from 37.9 ms in the paraventricular nucleus of the thalamus to 3,115 ms in the infracerebellar nucleus ([Figure 1C](#figure-main)). Despite this striking gradient, the remaining ~79% of timescale variance reflected variability within regions (median IQR = 588 ms per area) ([Supplementary Figure 3](#supp-fig-3)), highlighting that anatomical region is a meaningful but partial determinant of a neuron's temporal dynamics.
  
-Results were consistent across a Bayesian hierarchical model controlling for mouse, session, and probe ($n$ = 77,058 neurons, 131 mice; [Supplementary Methods](#supplementary-methods)), which confirmed brain region as the dominant source of variance (24.1%), with mouse identity accounting for only 2.3%, confirming the gradient reflects anatomical organisation rather than inter-individual differences ([Supplementary Table 1](#supp-table-1)). This gradient was independent of firing rate ([](#supp-fig-4)). Posterior estimates strongly supported longer intrinsic timescales in midbrain and hindbrain relative to forebrain (forebrain < midbrain, $p = 1.0 \times 10^{-4}$; forebrain < hindbrain, $p = 1.6 \times 10^{-7}$; $p$ = posterior probability of violation), while largely preserving the subdivision-level ordering (Spearman $\rho$ = 0.895, $p$ < 0.001). Notably, the 24.1% of variance attributable to brain region is nearly an order of magnitude higher than the 2.5% reported by {cite}`shi2025`, who analyzed an earlier version of the IBL dataset with 11,468 neurons. The source of this discrepancy warrants further investigation.
+Results were consistent across a Bayesian hierarchical model controlling for mouse, session, and probe ($n$ = 77,058 neurons, 131 mice; [Supplementary Methods](#supplementary-methods)), which confirmed brain region as the dominant source of variance (24.1%), with mouse identity accounting for only 2.3%, confirming the gradient reflects anatomical organisation rather than inter-individual differences ([Supplementary Table 1](#supp-table-1)). This gradient was independent of firing rate ([Supplementary Figure 4](#supp-fig-4)). Posterior estimates strongly supported longer intrinsic timescales in midbrain and hindbrain relative to forebrain (forebrain < midbrain, $p = 1.0 \times 10^{-4}$; forebrain < hindbrain, $p = 1.6 \times 10^{-7}$; $p$ = posterior probability of violation), while largely preserving the subdivision-level ordering (Spearman $\rho$ = 0.895, $p$ < 0.001). Notably, the 24.1% of variance attributable to brain region is nearly an order of magnitude higher than the 2.5% reported by {cite}`shi2025`, who analyzed an earlier version of the IBL dataset with 11,468 neurons. The source of this discrepancy warrants further investigation.
  
-73.9% of neurons required multi-component models ([](#supp-fig-5)), raising the question of whether fast and slow components are independently organized or jointly constrained. We therefore examined how $\tau_2$ co-varies with $\tau_1$ across regions, restricting the analysis to neurons best described by exactly two components (60.4%). In this model, $\tau_1$ and $\tau_2$ correspond to the faster (shorter) and slower (longer) time constants, respectively. $\tau_2$ co-varied strongly with $\tau_1$ (Pearson $r$ = 0.766, $p$ = 9.68 × 10⁻⁴⁴; [Figure 1D](#figure-main)), as assessed via ordinary least-squares linear regression on log-transformed region-level medians, following a sublinear relationship (slope = 0.545 on log-log axes), indicating that regions with longer fast timescales also tend to have proportionally longer slow timescales.
+73.9% of neurons required multi-component models ([Supplementary Figure 5](#supp-fig-5)), raising the question of whether fast and slow components are independently organized or jointly constrained. We therefore examined how $\tau_2$ co-varies with $\tau_1$ across regions, restricting the analysis to neurons best described by exactly two components (60.4%). In this model, $\tau_1$ and $\tau_2$ correspond to the faster (shorter) and slower (longer) time constants, respectively. $\tau_2$ co-varied strongly with $\tau_1$ (Pearson $r$ = 0.766, $p$ = 9.68 × 10⁻⁴⁴; [Figure 1D](#figure-main)), as assessed via ordinary least-squares linear regression on log-transformed region-level medians, following a sublinear relationship (slope = 0.545 on log-log axes), indicating that regions with longer fast timescales also tend to have proportionally longer slow timescales.
  
 ## Discussion
  
@@ -88,7 +88,7 @@ Units were retained for analysis if they met all of the following quality criter
  
 *Bounded confidence intervals and convergence:* Requiring the 95% confidence interval of $\tau_\text{eff}$ to exclude zero and $\tau_\text{eff}$ to remain below the fitting upper bound (30,000 ms) excluded poorly constrained or non-convergent estimates that would otherwise introduce noise into downstream analyses.
  
-**iSTTC estimator.** iSTTC estimates the autocorrelation-like function by generating temporally shifted copies of each spike train and computing the Spike Time Tiling Coefficient (STTC) between the original and shifted versions at successive lags ($\Delta t$ = 5 ms, 600–1200 lags). Because STTC operates directly on exact spike times rather than binned counts, it is insensitive to zero-padding artifacts and does not require a minimum firing rate threshold. We confirmed that iSTTC-derived $\tau_\text{eff}$ estimates showed no systematic dependence on firing rate across the analyzed population ([](#supp-fig-4)), ensuring that the observed timescale distributions reflect genuine temporal integration properties rather than sampling biases.
+**iSTTC estimator.** iSTTC estimates the autocorrelation-like function by generating temporally shifted copies of each spike train and computing the Spike Time Tiling Coefficient (STTC) between the original and shifted versions at successive lags ($\Delta t$ = 5 ms, 600–1200 lags). Because STTC operates directly on exact spike times rather than binned counts, it is insensitive to zero-padding artifacts and does not require a minimum firing rate threshold. We confirmed that iSTTC-derived $\tau_\text{eff}$ estimates showed no systematic dependence on firing rate across the analyzed population ([Supplementary Figure 4](#supp-fig-4)), ensuring that the observed timescale distributions reflect genuine temporal integration properties rather than sampling biases.
  
 **iSTTC derivation.** The iSTTC is an extension of the Spike Time Tiling Coefficient {cite}`cutts2014`, adapted to estimate autocorrelation directly from non-binned spike times {cite}`pochinok2026`. The standard STTC between two spike trains A and B is:
  
@@ -111,54 +111,53 @@ where $k = 2M$ ($M$ amplitudes and $M$ time constants), $n$ is the number of lag
 **Within-mouse consistency.** For each mouse with neurons in at least four Beryl subdivisions ($n$ = 56), we computed the Spearman rank correlation between its per-subdivision median $\tau_\text{eff}$ and the population-level ordering, tested against zero via one-sample t-test.
  
 ---
+
+```{raw:typst}
+#pagebreak(weak: true)
+```
  
 ## Supplementary Figures
  
 ```{figure} figures/figure_s1.png
 :label: supp-fig-1
-:kind: supplementary
 :align: center
 :alt: Methodological comparison of autocorrelation estimators
-
-**Methodological comparison of autocorrelation estimators for a representative neuron.** Results shown for an example neuron (Session 41431f53, Cluster 266) to illustrate the sensitivity of autocorrelation estimates to methodological choices. **(A)** Sensitivity to binning resolution: binned ACF estimates vary substantially depending on bin size (5 ms, 20 ms, 50 ms bins), while iSTTC (unbinned) provides a consistent estimate independent of bin size. **(B)** Continuous vs. epoched bias: iSTTC on the continuous spike train yields a higher and more slowly decaying autocorrelation than PearsonR on 1s epoched trials, illustrating that trial-based epoching can introduce a downward bias. These examples motivate the use of iSTTC for timescale estimation; systematic validation across the full population is provided in [](#supp-fig-4).
 ```
+ 
+**Supplementary Figure 1: Methodological comparison of autocorrelation estimators for a representative neuron.** Results shown for an example neuron (Session 41431f53, Cluster 266) to illustrate the sensitivity of autocorrelation estimates to methodological choices. **(A)** Sensitivity to binning resolution: binned ACF estimates vary substantially depending on bin size (5 ms, 20 ms, 50 ms bins), while iSTTC (unbinned) provides a consistent estimate independent of bin size. **(B)** Continuous vs. epoched bias: iSTTC on the continuous spike train yields a higher and more slowly decaying autocorrelation than PearsonR on 1s epoched trials, illustrating that trial-based epoching can introduce a downward bias. These examples motivate the use of iSTTC for timescale estimation; systematic validation across the full population is provided in [Supplementary Figure 4](#supp-fig-4).
  
 ```{figure} figures/figure_s2.png
 :label: supp-fig-2
-:kind: supplementary
 :align: center
 :alt: Pipeline for estimating intrinsic neural timescales using iSTTC
-
-**Pipeline for estimating intrinsic neural timescales using iSTTC.** Raw spike times from spontaneous activity recordings (5–10 min, ≥100 spikes) are processed in five steps: (1) spike train input; (2) iSTTC autocorrelation, computed by generating shifted copies of each spike train at successive lags (lag shift = 5 ms, 600–1200 lags) and applying the STTC formula to produce an autocorrelation curve; (3) multi-exponential fitting with $M$ = 1–4 components; (4) BIC model selection, with the constraint that each component contributes ≥1% to the total fit; (5) output timescales $\tau_1$–$\tau_4$ and amplitude-weighted effective timescale $\tau_\text{eff}$.
 ```
+ 
+**Supplementary Figure 2: Pipeline for estimating intrinsic neural timescales using iSTTC.** Raw spike times from spontaneous activity recordings (5–10 min, ≥100 spikes) are processed in five steps: (1) spike train input; (2) iSTTC autocorrelation, computed by generating shifted copies of each spike train at successive lags (lag shift = 5 ms, 600–1200 lags) and applying the STTC formula to produce an autocorrelation curve; (3) multi-exponential fitting with $M$ = 1–4 components; (4) BIC model selection, with the constraint that each component contributes ≥1% to the total fit; (5) output timescales $\tau_1$–$\tau_4$ and amplitude-weighted effective timescale $\tau_\text{eff}$.
  
 ```{figure} figures/figure_s3.png
 :label: supp-fig-3
-:kind: supplementary
 :align: center
-:alt: Population distribution of effective intrinsic timescales
-
-**Population distribution of effective intrinsic timescales.** Histogram of $\tau_\text{eff}$ across all well-fitted neurons (log-scaled x-axis), revealing a broad, right-skewed distribution with a mode near 800 ms and a heavy tail extending beyond 1,000 ms.
+:alt: Effective intrinsic timescale as a function of firing rate
 ```
+
+**Supplementary Figure 3: Effective intrinsic timescale as a function of firing rate.** Distribution of $\tau_\text{eff}$ across neurons grouped into firing rate bins (IQR shown as box height, median as horizontal line, log scale on both axes). Contrary to the expectation that high firing rates would trivially produce short timescales, no simple inverse relationship is observed: median $\tau_\text{eff}$ is lowest in the <1 Hz bin and rises across intermediate firing rates, with the highest median values in the 20–50 and >50 Hz bins. The broad IQR within each bin further indicates that firing rate is a poor predictor of $\tau_\text{eff}$ at the single-neuron level.
  
 ```{figure} figures/figure_s4.png
 :label: supp-fig-4
-:kind: supplementary
 :align: center
-:alt: Effective intrinsic timescale as a function of firing rate
-
-**Effective intrinsic timescale as a function of firing rate.** Distribution of $\tau_\text{eff}$ across neurons grouped into firing rate bins (IQR shown as box height, median as horizontal line, log scale on both axes). Contrary to the expectation that high firing rates would trivially produce short timescales, no simple inverse relationship is observed: median $\tau_\text{eff}$ is lowest in the <1 Hz bin and rises across intermediate firing rates, with the highest median values in the 20–50 and >50 Hz bins. The broad IQR within each bin further indicates that firing rate is a poor predictor of $\tau_\text{eff}$ at the single-neuron level.
+:alt: Distribution of the number of timescale components per neuron
 ```
+
+**Supplementary Figure 4: Distribution of the number of timescale components per neuron.** The majority of well-fitted neurons were best described by two-timescale models (60.4%), followed by one-timescale (25.7%) and three-timescale (13.8%) models, with only 0.1% requiring four timescales. The optimal number of components was selected using the Bayesian information criterion (BIC), with the constraint that each component contributed at least 1% to the overall autocorrelation shape.
  
 ```{figure} figures/figure_s5.png
 :label: supp-fig-5
-:kind: supplementary
 :align: center
-:alt: Distribution of the number of timescale components per neuron
-
-**Distribution of the number of timescale components per neuron.** The majority of well-fitted neurons were best described by two-timescale models (60.4%), followed by one-timescale (25.7%) and three-timescale (13.8%) models, with only 0.1% requiring four timescales. The optimal number of components was selected using the Bayesian information criterion (BIC), with the constraint that each component contributed at least 1% to the overall autocorrelation shape.
+:alt: Population distribution of effective intrinsic timescales
 ```
  
+**Supplementary Figure 5: Population distribution of effective intrinsic timescales.** Histogram of $\tau_\text{eff}$ across all well-fitted neurons (log-scaled x-axis), revealing a broad, right-skewed distribution with a mode near 800 ms and a heavy tail extending beyond 1,000 ms.
+
 ---
 
 (supp-table-1)=
