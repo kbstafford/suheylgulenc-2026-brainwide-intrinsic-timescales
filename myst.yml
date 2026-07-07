@@ -89,6 +89,11 @@ project:
   - Brain-Wide Mapping
   - Multi-Exponential Modeling
   github: https://github.com/impact-scholars/suheylgulenc-2026-brainwide-intrinsic-timescales
+  options:
+    youtube: https://youtu.be/GHNo40Xe5J0?t=402
+  downloads:
+  - title: Seminar Presentation
+    url: https://youtu.be/GHNo40Xe5J0?t=402
   bibliography:
   - bib.bib
   doi: 10.5281/zenodo.20557997
