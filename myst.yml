@@ -4,7 +4,7 @@ extends:
 - https://raw.githubusercontent.com/impact-scholars/isp-actions-config/v0.2.0/isp-micropublication-2025.yml
 
 project:
-  date: 2026-07-06
+  date: 2026-07-07
   authors:
   - name: Süheyl Berat Gülenç
     orcid: 0009-0000-2009-5332
@@ -55,6 +55,8 @@ project:
 
   - name: Vikramaditya Bisani
     orcid: 0009-0001-2593-6580
+    affiliations:
+    - SRM Institute of Science and Technology
     roles:
     - conceptualization
     - data curation
