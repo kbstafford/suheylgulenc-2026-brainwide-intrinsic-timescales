@@ -24,7 +24,7 @@ The IBL dataset is uniquely suited for this analysis: its brain-wide Neuropixels
  
 ## Methods
  
-We analyzed 580,598 units from the IBL 2025 Brainwide Map Release {cite}`ibl2025` during 5–10-minute spontaneous epochs. Units with ≥100 spikes, declining autocorrelations, and fit $R^2$ ≥ 0.5 were retained (89,047 units, 15.34%). Brain regions were grouped using the Beryl parcellation — a brain-wide region atlas developed by the International Brain Laboratory {cite}`ibl_atlas` — into major divisions (forebrain, midbrain, hindbrain), 12 subdivisions, and 266 individual regions (220 with ≥15 neurons analyzed).
+We analyzed 580,598 units from the IBL 2025 Brainwide Map Release {cite}`ibl2025` during 5–10-minute spontaneous epochs. Units with ≥100 spikes, declining autocorrelations, and fit $R^2$ ≥ 0.5 were retained (89,047 units, 15.34%). Brain regions were grouped using the Beryl parcellation — a brain-wide region atlas developed by the {cite}`ibl_atlas` — into major divisions (forebrain, midbrain, hindbrain), 12 subdivisions, and 266 individual regions (220 with ≥15 neurons analyzed).
  
 Timescales were estimated using iSTTC, an unbinned autocorrelation estimator operating on exact spike times {cite}`pochinok2026`, avoiding biases in low-firing-rate neurons. Unlike binned ACF methods, iSTTC estimates are insensitive to bin size and epoching artifacts ([Supplementary Figure 1](#supp-fig-1)). Each autocorrelation was fitted with 1–4 exponential components:
  
